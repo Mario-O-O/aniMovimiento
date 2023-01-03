@@ -1,0 +1,107 @@
+:root{
+  --main-font:'Ubuntu';
+  --font-size: 16px;
+  --main-color: #222222;
+  --second-color: rgb(224, 245, 132);
+  --tres-color: #00cd98;
+  --contain-winth: 1200px;
+}
+
+html{
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  font-family: var(--main-font);
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+  transition: all 0.6s ease-out;
+}
+
+*{
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+
+
+.space {
+  background: #f8f8f8;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section{
+  text-align: center;
+}
+
+section p {
+  width: 400px;
+  margin: 0 auto;
+  padding: 35px 0;
+}
+
+section h5 {
+  margin: 25px;
+}
+
+.contTxt{
+  position: relative;
+  background: #f8f8f8;
+}
+
+.start, .end{
+  position: absolute;
+  width: 60px;
+  height: 1px;
+  right: 30px;
+}
+
+.start{
+  top: 0;
+  background: green;
+  z-index: 10;
+}
+
+.end{
+  bottom: 0;
+  background: red;
+  z-index: 10;
+}
+
+.cuadro{
+  background: #99cbff;
+  height: 30px;
+  width: 100px;
+  border-radius: 15px;
+  border: 1px solid #4772ff;
+  color: #4772ff;
+  /* margin.left: 200px; */
+}
+
+.aniMoveTransform{
+  height: 500px;
+}
+
+/* COLOR */
+.aniMoveColor{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1000px;
+}
+
+.aniMoveColor::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: #ededed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+/* COLOR */
