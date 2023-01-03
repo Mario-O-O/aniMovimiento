@@ -85,23 +85,3 @@ section h5 {
 .aniMoveTransform{
   height: 500px;
 }
-
-/* COLOR */
-.aniMoveColor{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1000px;
-}
-
-.aniMoveColor::before {
-  content: '';
-  height: 100%;
-  width: 100%;
-  background: #ededed;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-/* COLOR */

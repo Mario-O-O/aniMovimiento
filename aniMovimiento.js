@@ -195,8 +195,13 @@ function aniMoveSnippet(trigger, claseContElemet, claseElemet, classNum, element
 /****** aniMoveColor ******/
 function aniMoveColor(trigger, claseContElemet, elementClassNum) {
   let $ColorContElemet = d.querySelectorAll(claseContElemet);
-
+  let $ColorContElemetPseudo = d.querySelectorAll(claseContElemet);
+  
+  
   for (let i = 0; i < $ColorContElemet.length; i++) {
+    let $colorStart = $ColorContElemet[i].getAttribute("data-colorStart");
+    let $colorEnd = $ColorContElemet[i].getAttribute("data-colorEnd");
+
     $ColorContElemet[i].classList.add(elementClassNum + i);
     
     let $colorElAddnewClass = d.querySelector(`.${elementClassNum + i}`);
@@ -204,21 +209,26 @@ function aniMoveColor(trigger, claseContElemet, elementClassNum) {
     if ($colorElAddnewClass) {   
       d.addEventListener('scroll', (e) =>{
         // Valores de comienzo y final de la animacion
-        let $Colorstar = Math.round($colorElAddnewClass.getBoundingClientRect().top);
-        let $Colorend = Math.round($colorElAddnewClass.getBoundingClientRect().bottom);
+        let colorstar = Math.round($colorElAddnewClass.getBoundingClientRect().top);
+        let colorend = Math.round($colorElAddnewClass.getBoundingClientRect().bottom);
   
         // console.log();
   
-        if ($Colorstar < trigger && $Colorend > trigger) {
+        if (colorstar < trigger && colorend > trigger) {
           // console.log('start');
-          let num = trigger - $Colorstar;
+          let num = trigger - colorstar;
           let porcentaje = Math.ceil((num / $colorElAddnewClass.clientHeight) * 100);
           let opacidad = (porcentaje * 100) / 10000;
   
-          $colorElAddnewClass.style.background= `rgb(0, 0, 0, ${opacidad})`;
+          // color que cambia colorend
+          $colorElAddnewClass.style.background= $colorEnd.substring(0, $colorEnd.length - 2) + opacidad + ")";
+
+          // color fijo colorStart
+          $ColorContElemetPseudo[0].style.setProperty('--bgVar', $colorStart);
+
         }else{
-          if ($Colorstar >= trigger) { $colorElAddnewClass.style.background= `rgb(0, 0, 0, 0)`;}
-          if ($Colorend <= trigger) { $colorElAddnewClass.style.background= `rgb(0, 0, 0, 1)`;}
+          if (colorstar >= trigger) { $colorElAddnewClass.style.background= $colorStart;}
+          if (colorend <= trigger) { $colorElAddnewClass.style.background= $colorEnd;}
         }
       });
     }
@@ -236,7 +246,7 @@ d.addEventListener('DOMContentLoaded', (e) =>{
 
   aniMoveSnippet(triggerB, ".aniMoveTransform", ".elemetAction", "transformA", "elementTransformA");
 
-  aniMoveColor(trigger, ".aniMoveColor", "colorA", "elemetColorA");
+  aniMoveColor(triggerB, ".aniMoveColor", "colorA");
 
 });
 
